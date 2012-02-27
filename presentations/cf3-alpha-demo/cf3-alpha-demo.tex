@@ -82,8 +82,139 @@
 \section{Mesh}
 
 \begin{frame}
- \frametitle{Mesh}
+  \frametitle{Mesh}
+    Features:
+    \begin{itemize}
+      \item Flexible functional data structure built on component environment
+      \item Unlimited number of meshes
+      \item Unlimited nesting of regions to allow CAD-like topologies
+      \item Unstructured meshes for complex geometries
+      \item Support for both Continuous / Discontinuous fields
+      \item Support for fields based on arbitrary shape-function
+      \item Parallel distributed and loadbalanced
+    \end{itemize}
 \end{frame}
+
+\frame[containsverbatim]{ \frametitle{CAD-like topology:\; mesh.print\_tree() }
+\begin{verbatim}
+  Mesh                              Mesh
+    + Topology                      Region
+        - Flow                      Region
+        + AirPlane                  Region
+            + Wings                 Region
+            |   + LeftWing          Region
+            |   |   - Patch1        Region
+            |   |   - Patch2        Region
+            |   - RightWing         Region
+            + Fuselage              Region
+                + Quads             Elements
+                + Triags            Elements
+\end{verbatim}
+  % \begin{itemize}
+  %   \item Elements are grouped per type inside these regions
+  %   \begin{itemize}
+  %     \item Memory optimized per element type (connectivity tables)
+  %     \item Optimized numerical algorithms per element type possible.
+  %   \end{itemize}
+  % \end{itemize}
+}
+
+\frame{ \frametitle{Spaces and Fields}
+  \begin{block}{Spaces}
+    \begin{itemize}
+      \item Parallel representation of the mesh, or part of the mesh
+      \item Defined by shape-function and connectivity table
+      \item Continuous/Discontinuous
+      \item Accurate interpolation between spaces
+    \end{itemize}
+  \end{block}
+\begin{block}{Fields}
+  \begin{itemize}
+    \item Defined in 1 space (Not necessarily the entire mesh)
+    \item Continuous/Discontinuous (e.g. cell-centred finite volume)
+    \item Synchronizable using MPI
+    \item Coordinates are a field like any other
+  \end{itemize}
+\end{block}
+}
+\frame{ \frametitle{Spaces and Fields}
+
+Include here graphical view of spaces
+
+}
+
+
+\frame[containsverbatim]{ \frametitle{Spaces and Fields}
+\begin{columns}
+\begin{column}{0.4 \textwidth}
+\begin{verbatim}
+Mesh
++ Topology
+| - Flow
+|   - Triangles
+|   - Quads
++ GeometrySpace
+| - Coordinates
+| - WallDistance
++ SolutionSpace
+  - Coordinates
+  - Solution
+  - Residual
+\end{verbatim}
+\end{column}
+\begin{column}{0.6 \textwidth}
+\begin{verbatim}
+Quads
+- ElementType
++ Spaces
+  + GeometrySpace
+  | - ShapeFunction (P1)
+  | - ConnectivityTable
+  + SolutionSpace
+    - ShapeFunction (P3)
+    - ConnectivityTable
+\end{verbatim}
+\end{column}
+\end{columns}
+}
+
+\frame{ \frametitle{Mesh Manipulations}
+\begin{block}{Create new regions and elements}
+  \begin{itemize}
+    \item Build faces
+    \item Remove or merge regions
+    \item Reorganize regions
+  \end{itemize}
+\end{block}
+\begin{block}{Create new spaces and fields}
+  \begin{itemize}
+    \item High-order solution-space
+    \item P-multigrid with multiple solution-spaces
+    \item Simple to create and access.
+  \end{itemize}
+\end{block}
+}
+
+\frame{ \frametitle{Mesh IO}
+Distributed: meshes can be larger than memory of 1 processor
+Loadbalancing: Reduce communication between processors
+\begin{block}{Generation}
+  \begin{itemize}
+    \item Line, Rectangle, Box
+    \item Block-based assembly, with grading
+  \end{itemize}
+\end{block}
+\begin{block}{Input}
+  \begin{itemize}
+    \item Gmsh, Neutral, CGNS, OpenFOAM dict
+  \end{itemize}
+\end{block}
+\begin{block}{Output}
+  \begin{itemize}
+    \item Gmsh, Tecplot, VTK (Paraview), Neutral, CGNS
+  \end{itemize}
+\end{block}
+}
 
 \section{Conclusion}
 
