@@ -13,16 +13,17 @@
 \usepackage[T1]{fontenc}
 \usepackage{eurosym}
 
-\title[CF3 demo]{Coolfluid 3: Demonstration of current capabilities}
-
-\date{16 Nov 2011}
-
+\title[CF3 demo]{Coolfluid 3: Demonstration of current capabilities\\ \vspace{1cm}\includegraphics[width=0.4\textwidth]{figs/coolfluid}\vspace{-1cm}}
+\date{\today}
 \begin{document}
+
+\maketitle
+\logo{\includegraphics[width=0.1\textwidth]{figs/coolfluid}}
 
 \section{Introduction}
 
-
 \frame{ \frametitle{Coolfluid 3}
+http://coolfluid.github.com\\~\\
 \begin{itemize}
  \item Started based on CF2 experience, as natural evolution
  \item Focus on flexibility and inter-operability between solvers
@@ -51,7 +52,7 @@ In alphabetical order:
 
 \frame{ \frametitle{Development model}
 \begin{columns}
-\begin{column}{6cm}
+\begin{column}{0.5\textwidth}
 \begin{itemize}
  \item Open-source, GNU v3
  \item Stored on GitHub
@@ -75,10 +76,10 @@ In alphabetical order:
 
 \end{itemize}
 \end{column}
-\begin{column}{4cm}
+\begin{column}{0.5\textwidth}
 \begin{center}
- \includegraphics[width=4cm]{figs/github}\\
-\includegraphics[width=4cm]{figs/dash}
+ \includegraphics[width=\textwidth]{figs/github}\\
+ \includegraphics[width=\textwidth]{figs/dash}
 \end{center}
 \end{column}
 \end{columns}
@@ -122,7 +123,7 @@ In alphabetical order:
 }
 
 \frame{\frametitle{Python}
-Component system and signals are make it ideal to prepare blocks of codes, like LEGO, and the final order of execution is assembled in a python script.
+Component system and signals make it ideal to prepare blocks of codes, like LEGO, and the final order of execution is assembled in a python script.
 \begin{itemize}
  \item CF3 code parts are inidividually executed upon python calls
  \item Therefore CF3 is one big box of LEGO
@@ -390,8 +391,25 @@ Currently works with: Trilinos (Sandia National Labs).\\
 
 \section{Solvers}
 
-\frame{\frametitle{Spectral Finite Difference}
-SDM
+\frame{\frametitle{Spectral Difference}
+\begin{itemize}
+  \item Space discretization
+  \begin{itemize}
+    \item High-Order (1 $\rightarrow$ 6)
+    \item Discontinuous
+  \end{itemize}
+  \item Time discretization
+  \begin{itemize}
+    \item Explicit Runge Kutta Low Storage
+  \end{itemize}
+  \item Physics
+  \begin{itemize}
+    \item Euler (1D, 2D)
+    \item Linearized Euler (2D)
+    \item Linear Advection (1D, 2D)
+    \item Euler with moving reference (2D)
+  \end{itemize}
+\end{itemize}
 }
 
 \frame{\frametitle{Unstructured Finite Element}
