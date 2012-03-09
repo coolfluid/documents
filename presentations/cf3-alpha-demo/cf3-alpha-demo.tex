@@ -83,16 +83,20 @@
 
 \begin{frame}
   \frametitle{Mesh}
-    Features:
+    \begin{block}{Component environment:}
     \begin{itemize}
-      \item Flexible functional data structure built on component environment
-      \item Unlimited number of meshes
-      \item Unlimited nesting of regions to allow CAD-like topologies
-      \item Unstructured meshes for complex geometries
-      \item Support for both Continuous / Discontinuous fields
-      \item Support for fields based on arbitrary shape-function
-      \item Parallel distributed and loadbalanced
+      \item Multiple meshes
+      \item Nesting of regions (CAD)
     \end{itemize}
+    \end{block}
+    \begin{block}{Features:}
+    \begin{itemize}
+      \item Unstructured
+      \item Continuous / Discontinuous fields
+      \item High-order
+      \item Parallel
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \frame[containsverbatim]{ \frametitle{CAD-like topology:\; mesh.print\_tree() }
@@ -119,34 +123,56 @@
   % \end{itemize}
 }
 
-\frame{ \frametitle{Spaces and Fields}
+\def\colorize<#1>{\temporal<#1>{\color{black!25}}{\color{red!80}}{\color{black}}}
+
+\frame<1>[label=spaces_and_fields]{ \frametitle{Spaces and Fields}
   \begin{block}{Spaces}
     \begin{itemize}
-      \item Parallel representation of the mesh, or part of the mesh
-      \item Defined by shape-function and connectivity table
-      \item Continuous/Discontinuous
-      \item Accurate interpolation between spaces
+      \colorize<1> \item Parallel representation of the mesh, or part of the mesh
+      \colorize<1> \item Continuous/Discontinuous
+      \colorize<2> \item Defined by shape-function and connectivity table
+      \colorize<3> \item Accurate interpolation between spaces
     \end{itemize}
   \end{block}
-\begin{block}{Fields}
+{\begin{block}{Fields}
   \begin{itemize}
-    \item Defined in 1 space (Not necessarily the entire mesh)
-    \item Continuous/Discontinuous (e.g. cell-centred finite volume)
-    \item Synchronizable using MPI
-    \item Coordinates are a field like any other
+    \colorize<3> \item Defined in 1 space (Not necessarily the entire mesh)
+    \colorize<3> \item Continuous/Discontinuous (e.g. FE / SD)
+    \colorize<4> \item Synchronizable using MPI
+    \colorize<4> \item Coordinates are a field like any other
   \end{itemize}
 \end{block}
 }
-\frame{ \frametitle{Spaces and Fields}
-
-Include here graphical view of spaces
-
 }
 
 
+\frame[t]{ \frametitle{Spaces and Fields}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{center}
+  \includegraphics<1>[width=\columnwidth]{figs/spaces_0}
+  \includegraphics<2>[width=\columnwidth]{figs/spaces_1}
+  \includegraphics<3>[width=\columnwidth]{figs/spaces_2}
+  \includegraphics<4>[width=\columnwidth]{figs/spaces_3}
+\end{center}                                   
+\end{column}
+\begin{column}[b]{0.4\textwidth}
+  \begin{block}{\color{black} A 2D mesh}
+  \begin{itemize}
+  \item<2-> \color{red} Geometry space
+  \item<3-> \color{blue} Solution space
+  \item<4-> \color{brown} Interpolated space
+  \end{itemize}
+  \end{block}
+\end{column}
+\end{columns}
+}
+
+\againframe<2>{spaces_and_fields}
+
 \frame[containsverbatim]{ \frametitle{Spaces and Fields}
 \begin{columns}
-\begin{column}{0.4 \textwidth}
+\begin{column}{0.45 \textwidth}
 \begin{verbatim}
 Mesh
 + Topology
@@ -162,7 +188,7 @@ Mesh
   - Residual
 \end{verbatim}
 \end{column}
-\begin{column}{0.6 \textwidth}
+\begin{column}{0.5 \textwidth}
 \begin{verbatim}
 Quads
 - ElementType
@@ -177,6 +203,9 @@ Quads
 \end{column}
 \end{columns}
 }
+
+\againframe<3>{spaces_and_fields}
+\againframe<4>{spaces_and_fields}
 
 \frame{ \frametitle{Mesh Manipulations}
 \begin{block}{Create new regions and elements}
@@ -196,12 +225,14 @@ Quads
 }
 
 \frame{ \frametitle{Mesh IO}
-Distributed: meshes can be larger than memory of 1 processor
-Loadbalancing: Reduce communication between processors
+\begin{itemize}
+  \item[-] Distributed reading\\
+  \item[-] Distributed Repartitioning
+\end{itemize}
 \begin{block}{Generation}
   \begin{itemize}
     \item Line, Rectangle, Box
-    \item Block-based assembly, with grading
+    \item Scriptable Blocks, with grading
   \end{itemize}
 \end{block}
 \begin{block}{Input}
