@@ -1,0 +1,94 @@
+\documentclass[12pt]{scrartcl}
+\usepackage{geometry}
+\geometry{a4paper}
+
+
+\title{Dynamic Object Oriented Data Structure for Scientific High Performance Computing}
+% or how a data structure can be constructed and be adapted at run-time
+
+\author{}
+\begin{document}
+  \maketitle  
+  \tableofcontents
+  
+  \section{Motivation}
+  % Why would we want a dynamic adaptable data structure?
+  
+  \section{Component based data structure}
+  
+  \subsection{Browsing of data structure}
+  % or how a data structure can be seen visually
+  
+  % Explain the need for scientific "USERS" to see how to access and understand the available data,
+  % as well as developers to not lose track of what is there and what is missing.
+
+  % Other tree-based datastructures: HDF, CGNS
+
+
+  \subsection{Dynamic Organization}
+  % or how the datastructure is organized
+  
+  % 1) Creation
+  % 2) Reorganization
+  % 3) Growth/Consolidation
+  %    --> mathematical
+
+
+  
+  \subsection{Navigation and Query of data structure}
+  % or how to access the data structure
+  
+  % 1) path access
+  % 2) member functions
+  % 3) find functions
+  % 4) looping by type, name, tag, or other given predicate  (transparency, linearization)
+  
+
+
+
+  \section{A Mesh data structure in coolfluid 3}
+  % or how a Mesh in cf3 is defined
+  
+      \subsection{Requirements}
+      % or what is needed in terms of cf3 to be able to use any type of numerics with the mesh data structure
+      
+      % 1) Flexible, adaptible, simple --> mesh-transformations
+      % 2) High-order numerics need high-order representations of mesh
+      % 3) Discontinuous and Continuous fields
+      % 4) High performance computing 
+      %    --> minimal cache missing
+      %    --> parallel distrubuted partitioning, overlap growing, renumbering
+      % 5) Algorithm optimization (algorithms per element type)
+      % 6) Multiple meshes (interpolation, probe, multigrid)
+      
+      
+      \subsection{Organization}
+      % or how is the mesh organized and 
+        
+        % 1) CAD-like topology,
+        %    or how a mesh can be presented in a nested fashion
+        
+        % 2) Subdivision of elements per type
+        %    - Optimized algorithms (e.g. interpolation, template based)
+        %    - Connectivity tables are completely filled
+        
+        % 3) Dictionaries to consolidate and inform nodes and fields
+        
+        % 4) Dynamic growth, adaptation (see generic section of Organization)
+      
+      \subsection{Fields}
+      % or how spaces and dictionaries work together to manage e.g. high-order fields 
+      
+        % 1) What is a Space --> View of same mesh adapted to specifics of given numerics
+        % 2) What defines a space
+        % 3) What a space allows to do
+        %      - interpolation
+        %      - high-order fields, low-order mesh --> decoupling
+        %      - discontinuous fields, continuous mesh --> again decoupling
+        %      - reuse of mesh topology --> filtering on region
+      
+    
+      \subsection{Capabilities and examples/applications}
+      % or what can we do with the mesh in cf3
+  
+\end{document}
