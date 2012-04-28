@@ -1,0 +1,156 @@
+\documentclass[12pt]{scrartcl}
+
+\usepackage{geometry} 
+\geometry{a4paper} 
+
+% Engineering with Computers - Springer
+% Computing in Science and Engineering - AIP
+
+%%%-----------------------------------------------------------------------
+
+\title{A Dynamic Component System for High Performance Computing}
+
+\author{}
+
+%%%-----------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+%%%-----------------------------------------------------------------------
+
+\section{Motivation} 
+
+% or what problems we are about to solve
+
+%%%-----------------------------------------------------------------------
+
+\section{Dynamic Components} 
+
+% how we make dynamic components on a static language ?
+% why we need still a static library, and dont use directly python/numpy/... ?
+
+\subsection{Type mechanism}
+
+% why we need a type mechanism - platform independent ?
+
+% factories and libraries
+
+% builders 
+
+% inheritance type
+
+\subsection{Signals}
+
+% provide dynamic interfaces that can mutate at run-time
+% as messages in objective-c
+
+% anonymous signals are Events centralized in an Event manager
+
+% dichotomy signals vs Actions (diff granularity)
+
+
+\subsection{Properties and Options}
+
+% properties as dynamic variables
+
+% options & configuration system
+
+
+\subsection{Reflection and Introspection}
+
+% signals and properties are registered within component
+
+% obtain signal signatures via a signal itself - enables introspection  
+
+
+
+\subsection{Communication Protocol} 
+
+% serialization
+
+% json, xml, google protocol buffers
+
+
+%%%-----------------------------------------------------------------------
+
+\section{Component Identity and Structure} 
+
+% how we organize the components between each other ?
+% how we identify the components ?
+% how we address and transverse the components?
+
+\subsection{Tree structure} 
+
+% and the analogy to a file system
+
+% multiple roots & the question of free standing components
+
+% data managemets - data as components
+
+\subsection{Ownership}
+
+% strong ownership of children components in tree
+
+% plus access to other components via handles
+
+\subsection{Addressing}
+
+% cpath
+
+% compoentn access
+
+% links
+
+% uuid's
+
+\subsection{Iterators}
+
+% tree transversal
+
+% finding + type  mechanism
+
+
+%%%-----------------------------------------------------------------------
+
+\section{Interfaces to the Component System}
+
+% how we can interface this system with other languages and UI's ?
+
+\subsection{Dynamic languages}
+
+% python has a shallow / simple interface
+
+\subsection{Component Shell}
+
+% login into a component and interaact directly with him
+
+\subsection{Graphical Interface}
+
+% automatic generation of the interface
+
+%%%-----------------------------------------------------------------------
+
+\section{Applications}
+
+%%%-----------------------------------------------------------------------
+
+%%% TO COMPLEMENT 
+
+% distributed shared memory model - parallel environment
+
+% solver design
+
+% network layer - active objects
+
+%%%-----------------------------------------------------------------------
+
+%%% TODO:
+
+% active objects + network layer + shell login to comp.
+% multpi-physics
+
+\end{document}
