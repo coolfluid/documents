@@ -3,9 +3,12 @@
 \usepackage{geometry} 
 \geometry{a4paper} 
 
+% Engineering with Computers - Springer
+% Computing in Science and Engineering - AIP
+
 %%%-----------------------------------------------------------------------
 
-\title{A Component System for High Performance Computing}
+\title{A Dynamic Component System for High Performance Computing}
 
 \author{}
 
@@ -42,8 +45,28 @@
 
 \subsection{Signals}
 
+% provide dynamic interfaces that can mutate at run-time
+% as messages in objective-c
+
+% anonymous signals are Events centralized in an Event manager
+
+% dichotomy signals vs Actions (diff granularity)
+
+
+\subsection{Properties and Options}
+
+% properties as dynamic variables
+
+% options & configuration system
+
 
 \subsection{Reflection and Introspection}
+
+% signals and properties are registered within component
+
+% obtain signal signatures via a signal itself - enables introspection  
+
+
 
 \subsection{Communication Protocol} 
 
@@ -54,7 +77,7 @@
 
 %%%-----------------------------------------------------------------------
 
-\section{Identity and Structure} 
+\section{Component Identity and Structure} 
 
 % how we organize the components between each other ?
 % how we identify the components ?
@@ -67,6 +90,12 @@
 % multiple roots & the question of free standing components
 
 % data managemets - data as components
+
+\subsection{Ownership}
+
+% strong ownership of children components in tree
+
+% plus access to other components via handles
 
 \subsection{Addressing}
 
@@ -89,23 +118,39 @@
 
 \section{Interfaces to the Component System}
 
-% or how we can interface this system with other languages and UI's
+% how we can interface this system with other languages and UI's ?
+
+\subsection{Dynamic languages}
+
+% python has a shallow / simple interface
+
+\subsection{Component Shell}
+
+% login into a component and interaact directly with him
+
+\subsection{Graphical Interface}
+
+% automatic generation of the interface
 
 %%%-----------------------------------------------------------------------
 
-\section{Active Objects} 
-
-% can componets or sets of components become active objects?
+\section{Applications}
 
 %%%-----------------------------------------------------------------------
 
-% \section{SIMULYNK}
+%%% TO COMPLEMENT 
 
-% can we really make this a modular simultation???
-% what would the connections represent? 
-% messages, signals, data flow?
+% distributed shared memory model - parallel environment
+
+% solver design
+
+% network layer - active objects
 
 %%%-----------------------------------------------------------------------
 
+%%% TODO:
+
+% active objects + network layer + shell login to comp.
+% multpi-physics
 
 \end{document}
